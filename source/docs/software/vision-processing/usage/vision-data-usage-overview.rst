@@ -8,10 +8,5 @@ The goal of this section is to introduce concepts and methods of using data you 
 Vision Data
 -----------
 
-Since the most common way to get your vision data is through NetworkTables, all of the following articles assume a `NetworkTable` object in code named `camera`(Java)/`Camera`(C++).
-For more information on using Network Tables take a look at the appropriate section :ref:'here<docs/software/networktables/networktables-intro:What is NetworkTables>'.
-
-.. tabs::
-
-   .. code-tab:: java
-
+Since the most common way to get your vision data is through NetworkTables, all of the following articles assume a ``NetworkTable`` object in code named ``camera`` (Java)/``Camera`` (C++).
+For more information on using Network Tables take a look at the appropriate section :ref:`here<docs/software/networktables/networktables-intro:What is NetworkTables>`.
