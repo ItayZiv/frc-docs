@@ -85,4 +85,35 @@ Now, this should be enough for most use cases, simply tune the P value, by raisi
 Additional Functionality
 ------------------------
 
+Sometimes there are additional functions we want on top of alignment, the most common one is driving forward/backwards with a joystick.
+This comes in very useful in seasons like 2019, where on top of aligning with the target, we also need to reach it, while staying aligned.
+These examples use a joystick named ``joystick``(Java)/``Joystick``(C++)
+
+Tank Drive
+^^^^^^^^^^
+
+Implementation in tank drive can be a bit confusing, to make it easy to read, we store the left and right powers in their own variables.
+
+.. tabs::
+
+   .. code-tab:: java
+
+     double forwardPower = joystick.getY();
+
+     //Once again if you are turning the wrong way, swap the 2 sides
+     double leftPower = MathUtil.clamp(power + forwardPower, -1, 1);
+     double rightPower = MathUtil.clamp(-power + forwardPower, -1, 1);
+
+     drive.tankDrive(leftPower, rightPower);
+
+Arcade Drive
+^^^^^^^^^^^^
+
+Implementation in tank drive is very simple, we simply have to change a single line.
+
+.. tabs::
+
+   .. code-tab:: java
+
+     drive.arcadeDrive(joystick.getY(), power);
 
