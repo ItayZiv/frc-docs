@@ -49,6 +49,8 @@ This is the easiest method to implement if your not using WPILib's drive classes
 
 The implementation itself is quite simple, first of all we get the yaw from our ``NetworkTable``, then all we have to do is get the power to command to command from the controller, and give each side opposing power to make the robot turn.
 
+.. note:: Remember, this code needs to be run periodically, meaning it has to be either in a ``periodic`` method for a TimedRobot, or in a command's ``execute`` method. If you are running your loops at a speed other than once per 20ms (50hz), make sure to change the PIDController as needed.
+
 .. tabs::
 
    .. code-tab:: java
@@ -69,6 +71,8 @@ Arcade Drive Implementation
 This method is a bit harder to implement if not using WPILib's drive classes, but will make implementing additional functionality easier.
 
 If using WPILib's drive classes the implementation is also quite easy, once again we need to get our yaw from our ``NetworkTable``, then get the power in which to turn the robot, and use arcade drive to command the robot to turn at that rate.
+
+.. note:: Remember, this code needs to be run periodically, meaning it has to be either in a ``periodic`` method for a TimedRobot, or in a command's ``execute`` method. If you are running your loops at a speed other than once per 20ms (50hz), make sure to change the PIDController as needed.
 
 .. tabs::
 
