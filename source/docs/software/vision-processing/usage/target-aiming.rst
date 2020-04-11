@@ -78,7 +78,7 @@ If using WPILib's drive classes the implementation is also quite easy, once agai
 
    .. code-tab:: java
 
-     double yaw = table.getEntry("yaw").getDouble();
+     double yaw = camera.getEntry("yaw").getDouble();
      double power = MathUtil.clamp(controller.calculate(yaw), -1, 1);
 
      //If the robot turns the wrong direction, simply negate the power, causing the robot to turn the opposite direction.
@@ -89,12 +89,14 @@ Now, this should be enough for most use cases, simply tune the P value, by raisi
 Additional Functionality
 ------------------------
 
-Sometimes there are additional functions we want on top of alignment, the most common one is driving forward/backwards with a joystick.
-This comes in very useful in seasons like 2019, where on top of aligning with the target, we also need to reach it, while staying aligned.
+This section covers a few changes that can be made to add additional functionality on top of just aiming to a target.
+These can come useful in various seasons in many different ways.
 
 Driving While Aligning
 ^^^^^^^^^^^^^^^^^^^^^^
 
+The most common one is probably driving forward/backwards with a joystick.
+This comes in very useful in seasons like 2019, where on top of aligning with the target, we also need to reach it, while staying aligned.
 These examples use a joystick named ``joystick`` (Java)/``Joystick`` (C++)
 
 Driving While Aligning With Tank Drive
@@ -125,3 +127,22 @@ Implementation in tank drive is very simple, we simply have to change a single l
 
      drive.arcadeDrive(joystick.getY(), power);
 
+Seeking
+^^^^^^^
+
+Seeking comes useful, when we need to aim at a target, but we can't be sure we are currently looking at it. What we do is just make the robot turn in place until it sees a target.
+Because we need to know when a target is visible, this requires another value from our vision processing, a ``hasTarget`` value.
+
+The implementation itself is the same for both tank drive and arcade drive, because we are only modifying the power given to turn.
+Simply replace the line where we set the ``power`` variable with this.
+
+.. tabs::
+
+   .. code-tab:: java
+
+     //You can change this value to negative to turn the other direction if desired.
+     //Additionally, you should adjust this value to fit your robot, and your needs for turning speed and stability.
+     double power = 0.5;
+     if (camera.getEntry("hasTarget").getBoolean()) {
+       power = MathUtil.clamp(controller.calculate(yaw), -1, 1);
+     }
