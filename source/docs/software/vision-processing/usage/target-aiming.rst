@@ -21,7 +21,7 @@ Implementation
 
 The basic principle behind aiming to a target is to command the drivetrain to turn based on how big our error is from the target.
 
-To align we need some kind of controller to react to the error to the target, in this article we will be using a ``PIDController`` (`Java <https://first.wpi.edu/FRC/roborio/release/docs/java/edu/wpi/first/wpilibj/PIDController.html>`__, `C++ <https://first.wpi.edu/FRC/roborio/release/docs/cpp/classfrc2_1_1PIDController.html>`__), for more information about controllers and PID controllers, take a look at :ref:`docs/software/advanced-control/introduction/control-system-basics:Control System Basics` and the ones that follow it.
+To align we need some kind of controller to react to the error to the target, in this article we will be using a ``PIDController`` (`Java <https://first.wpi.edu/FRC/roborio/release/docs/java/edu/wpi/first/wpilibj/PIDController.html>`__, `C++ <https://first.wpi.edu/FRC/roborio/release/docs/cpp/classfrc2_1_1PIDController.html>`__), for more information about controllers and PID controllers, take a look at :ref:`docs/software/advanced-controls/introduction/control-system-basics:Control System Basics` and the ones that follow it.
 Some of these example actually only use the controller to implement a P controller or a PD controller, but we will still use the ``PIDController`` WPILib class, with gains of 0 for the unused components of the controller.
 
 There are a number of ways to implement the driving itself, we will cover a few of them here.
@@ -84,7 +84,7 @@ If using WPILib's drive classes the implementation is also quite easy, once agai
      //If the robot turns the wrong direction, simply negate the power, causing the robot to turn the opposite direction.
      drive.arcadeDrive(0, power);
 
-Now, this should be enough for most use cases, simply tune the P value, by raising/lowering it until you get a reasonable response time with minimal oscillations. To get a full look into please refer to :ref:`docs/software/advanced-control/introduction/tuning-pid-controller:Tuning a PID Controller`
+Now, this should be enough for most use cases, simply tune the P value, by raising/lowering it until you get a reasonable response time with minimal oscillations. To get a full look into please refer to :ref:`docs/software/advanced-controls/introduction/tuning-pid-controller:Tuning a PID Controller`
 
 Additional Functionality
 ------------------------
